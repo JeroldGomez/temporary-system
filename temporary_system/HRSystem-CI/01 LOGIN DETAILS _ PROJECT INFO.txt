@@ -1,0 +1,26 @@
+**Log on to codeastro.com for more projects!**
+
+**Database Name: hrsystemci**
+
+**Developed by Nawjesh Soyeb**
+
+**Recommended PHP Version 5.6 or Newer(7.4)**
+
+
+**Admin Login Details** 
+
+Email   : thoma@mail.com
+Password: Password@123
+
+ERROR! I think a better way is to implement #[\AllowDynamicProperties]
+
+Easier and much shorter.
+
+In all the above mentioned classes add #[\AllowDynamicProperties] above class xxxxxx {
+
+ERROR! For anyone else that comes across this error, I also experienced it after upgrading to PHP 8.1. The only way I could find to "fix" it was by adding #[\ReturnTypeWillChange] before the open, read, write, close, destroy and gc functions in /system/libraries/Session/drivers/Session_files_driver.php. For example:
+
+#[\ReturnTypeWillChange]
+public function open($save_path, $name)
+{
+...
